@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode] //코드 상시실행
 public class IsometricZ : MonoBehaviour
 {
     void Start()

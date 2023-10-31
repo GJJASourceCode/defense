@@ -11,12 +11,12 @@ public class TowerSpawner : MonoBehaviour
     {
         Tile tile = tileTransform.GetComponent<Tile>();
 
-        if (tile.IsBuildTower == true)
+        if (tile.IsBuildTower == true) //건설됨이면 건설x
         {
             return;
         }
 
         tile.IsBuildTower = true; //건설됨 설정
-        Instantiate(towerPrefab, tileTransform.position, Quaternion.identity); //타워 건설
+        Instantiate(towerPrefab, tileTransform.position + Vector3.up * 0.4f, Quaternion.identity); //타워 건설
     }
 }

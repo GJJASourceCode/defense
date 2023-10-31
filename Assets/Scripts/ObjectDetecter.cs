@@ -21,8 +21,8 @@ public class ObjectDetecter : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) //좌클
         {
             ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+            if (hit != null)
             {
                 if (hit.transform.CompareTag("Tile"))
                 {
