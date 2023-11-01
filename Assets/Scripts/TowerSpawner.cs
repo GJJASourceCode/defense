@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject towerPrefab;
+    public GameObject towerPrefab;
+    private float TowerNumber;
+    bool keypad;
+
+    public void Update()
+    {
+        keypad = Input.GetKeyDown(KeyCode.Alpha1);
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            towerPrefab = GameObject.Find("Tower01");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            towerPrefab = GameObject.Find("wizard01");
+        }
+    }
 
     public void SpawnTower(Transform tileTransform)
     {
