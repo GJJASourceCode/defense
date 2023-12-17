@@ -11,7 +11,7 @@ public class TowerSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject towerPrefab;
-    private List<List<bool>> isBuilt;
+    public List<List<bool>> isBuilt;
 
     [SerializeField]
     private Tilemap ground;

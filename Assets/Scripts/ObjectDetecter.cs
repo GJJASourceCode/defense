@@ -38,7 +38,10 @@ public class ObjectDetecter : MonoBehaviour
             // Vector3Int pos = new Vector3Int(cO.x + 1, cO.y + 1, 0);
             // Debug.Log(ground.GetTile(pos).name);
             if (ground.GetTile(pos) != null)
+            {
                 towerSpawner.SpawnTower(pos);
+                Debug.Log(pos);
+            }
         }
     }
 }
