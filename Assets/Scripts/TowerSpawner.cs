@@ -18,7 +18,7 @@ public class TowerSpawner : MonoBehaviour
 
     private BoundsInt cellBounds;
 
-    void Start()
+    void Awake()
     {
         cellBounds = ground.cellBounds;
 

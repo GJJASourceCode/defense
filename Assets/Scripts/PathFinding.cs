@@ -101,9 +101,9 @@ public class PathFinding : MonoBehaviour
                 {
                     finalNodeList[i].x = finalNodeList[i].x + bounds.xMin;
                     finalNodeList[i].y = finalNodeList[i].y + bounds.yMin;
-                    towerSpawner.SpawnTower(
-                        new Vector3Int(finalNodeList[i].x, finalNodeList[i].y, 0)
-                    );
+                    // towerSpawner.SpawnTower(
+                    //     new Vector3Int(finalNodeList[i].x, finalNodeList[i].y, 0)
+                    // );
 
                     print(i + "번째는 " + finalNodeList[i].x + ", " + finalNodeList[i].y);
                 }
@@ -196,8 +196,8 @@ public class PathFinding : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        FindPath(-12, 0, -2, 7);
-    }
+    // void Start()
+    // {
+        // FindPath(-12, 0, -2, 7);
+    // }
 }
