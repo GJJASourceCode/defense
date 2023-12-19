@@ -9,6 +9,15 @@ public class MobSpawner : MonoBehaviour
 
     private float time = 0f;
 
+    private List<Enemy> enemyList;
+
+    public List<Enemy> EnemyList => enemyList;
+
+    void Awake()
+    {
+        enemyList = new List<Enemy>();
+    }
+
     void Update()
     {
         time += Time.deltaTime;
@@ -18,6 +27,12 @@ public class MobSpawner : MonoBehaviour
             time = 0f;
 
             Instantiate(mobPrefab, transform.position, Quaternion.identity);
+            enemyList.Add(enemy);
         }
+    }
+
+    public void MobDie(Enemy enemy)
+    {
+        enemyList.Remove(enemy);
     }
 }
