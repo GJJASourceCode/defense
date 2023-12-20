@@ -22,6 +22,7 @@ public class ResourceSpawner : MonoBehaviour
     {
         if (curTime >= spawnTime)
         {
+            curTime = 0;
             int x = Random.Range(0, spawnPoints.Length);
             if (isSpawn[x]) // x위치에 자원 있으면 생성no
             {
