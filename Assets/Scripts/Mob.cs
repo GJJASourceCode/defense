@@ -10,10 +10,15 @@ public class Mob : MonoBehaviour
     private float maxHP;
     private float currentHP;
     private bool isDie = false;
+    private HealthBar healthBar;
 
     void Awake()
     {
         currentHP = maxHP;
+    }
+
+    void Start() {
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     public void TakeDamage(float damage)
@@ -24,6 +29,8 @@ public class Mob : MonoBehaviour
         currentHP -= damage;
 
         Debug.Log("currentHP: " + currentHP);
+
+        healthBar.ChangeHealth(currentHP, maxHP);
 
         if (currentHP <= 0)
         {
