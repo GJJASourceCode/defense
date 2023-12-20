@@ -27,12 +27,6 @@ public class MobController : MonoBehaviour
         );
         var targetPos = pathFinding.ground.WorldToCell(house.transform.position);
 
-        // pathFinding.towerSpawner.SpawnTower(startPos);
-        // pathFinding.towerSpawner.SpawnTower(targetPos);
-
-        // Debug.Log(startPos);
-        // Debug.Log(targetPos);
-
         path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
         if (path == null)
         {

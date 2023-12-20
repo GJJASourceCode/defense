@@ -69,9 +69,6 @@ public class MobSpawner : MonoBehaviour
 
         for (int i = 0; i < path.Count; i++)
         {
-            // towerSpawner.SpawnTower(
-            //     new Vector3Int(finalNodeList[i].x, finalNodeList[i].y, 0)
-            // );
             var tilePos = new Vector3Int(path[i].x, path[i].y, 0);
             pathFinding.ground.SetTile(tilePos, pathTile);
             StartCoroutine(ReplaceTiletoDefault());
@@ -84,11 +81,7 @@ public class MobSpawner : MonoBehaviour
 
         for (int i = 0; i < path.Count; i++)
         {
-            // towerSpawner.SpawnTower(
-            //     new Vector3Int(finalNodeList[i].x, finalNodeList[i].y, 0)
-            // );
             var tilePos = new Vector3Int(path[i].x, path[i].y, 0);
-            // pathFinding.ground.SetTile(tilePos, defaultTile);
             pathFinding.ground.SetTile(tilePos, defaultTile);
         }
     }

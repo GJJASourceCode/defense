@@ -28,9 +28,6 @@ public class Mob : MonoBehaviour
             return;
 
         currentHP -= damage;
-
-        Debug.Log("currentHP: " + currentHP);
-
         healthBar.ChangeHealth(currentHP, maxHP);
 
         if (currentHP <= 0)

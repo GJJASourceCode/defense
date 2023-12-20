@@ -44,7 +44,6 @@ public class Ground : MonoBehaviour
                 TileBase tile = ground.GetTile(new Vector3Int(x, y, 0));
                 if (tile != null)
                 {
-                    Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
                     if (FindObjectOfType<SpawnManager>().isBuilt[x - bounds.xMin][y - bounds.yMin])
                     {
                         temp.Add(new Node(true, x - bounds.xMin, y - bounds.yMin));
