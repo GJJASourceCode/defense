@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4634717008744102564}
   - component: {fileID: 3608321519381940882}
+  - component: {fileID: 5600718002168114276}
+  - component: {fileID: -5545694619013435409}
   m_Layer: 0
   m_Name: Tower01
   m_TagString: Untagged
@@ -84,3 +86,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5600718002168114276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4280852114963924483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238fcbd5e66e3164c921666f7cd362ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 5
+  attackSpeed: 1
+  attackRange: 2
+  arrowPrefab: {fileID: 5333975174468345529, guid: 53325b524a0ee414dadd15c8273fe22a, type: 3}
+--- !u!114 &-5545694619013435409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4280852114963924483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dddf6adc59714458eb7bdac4741d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePosition: {x: 0, y: 0, z: 0}

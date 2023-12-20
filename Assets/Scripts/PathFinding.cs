@@ -105,7 +105,7 @@ public class PathFinding : MonoBehaviour
                     //     new Vector3Int(finalNodeList[i].x, finalNodeList[i].y, 0)
                     // );
 
-                    print(i + "번째는 " + finalNodeList[i].x + ", " + finalNodeList[i].y);
+                    // print(i + "번째는 " + finalNodeList[i].x + ", " + finalNodeList[i].y);
                 }
 
                 return finalNodeList;
@@ -198,6 +198,6 @@ public class PathFinding : MonoBehaviour
 
     // void Start()
     // {
-        // FindPath(-12, 0, -2, 7);
+    // FindPath(-12, 0, -2, 7);
     // }
 }

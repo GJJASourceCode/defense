@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobHp : MonoBehaviour
+public class Mob : MonoBehaviour
 {
+    public Node tilePosition;
+
     [SerializeField]
     private float maxHP;
     private float currentHP;
@@ -21,9 +23,13 @@ public class MobHp : MonoBehaviour
 
         currentHP -= damage;
 
+        Debug.Log("currentHP: " + currentHP);
+
         if (currentHP <= 0)
         {
             isDie = true;
+            FindObjectOfType<MobSpawner>().MobDie(this);
+            Destroy(gameObject);
         }
     }
 }

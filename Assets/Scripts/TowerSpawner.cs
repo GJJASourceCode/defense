@@ -54,6 +54,11 @@ public class TowerSpawner : MonoBehaviour
 
         var tilePos = ground.CellToWorld(tileIntPos + Vector3Int.up + Vector3Int.right);
 
-        Instantiate(towerPrefab, new Vector3(tilePos.x, tilePos.y, -3f), Quaternion.identity); //타워 건설
+        var tower = Instantiate(
+            towerPrefab,
+            new Vector3(tilePos.x, tilePos.y, -3f),
+            Quaternion.identity
+        ); //타워 건설
+        tower.GetComponent<Tower>().tilePosition = tileIntPos;
     }
 }
