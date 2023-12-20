@@ -6,15 +6,18 @@ public class HealthBar : MonoBehaviour
 {
     private float maxLength;
     private RectTransform rectTransform;
-    void Start() 
+
+    void Start()
     {
-        rectTransform=GetComponent<RectTransform>();
+        rectTransform = GetComponent<RectTransform>();
         maxLength = rectTransform.rect.width;
     }
 
     public void ChangeHealth(float currentHealth, float maxHealth)
     {
-        rectTransform.sizeDelta = new Vector2(currentHealth / maxHealth * maxLength, rectTransform.rect.height);    }
-
-
+        rectTransform.sizeDelta = new Vector2(
+            currentHealth / maxHealth * maxLength,
+            rectTransform.rect.height
+        );
+    }
 }

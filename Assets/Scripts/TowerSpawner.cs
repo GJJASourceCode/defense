@@ -11,54 +11,23 @@ public class TowerSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject towerPrefab;
-    public List<List<bool>> isBuilt;
 
     [SerializeField]
     private Tilemap ground;
 
     private BoundsInt cellBounds;
+    private SpawnManager spawnManager;
 
     void Awake()
     {
         cellBounds = ground.cellBounds;
-
-        isBuilt = new List<List<bool>>();
-
-        for (int i = 0; i < cellBounds.xMax - cellBounds.xMin; i++)
-        {
-            var temp = new List<bool>();
-            for (int j = 0; j < cellBounds.yMax - cellBounds.yMin; j++)
-            {
-                temp.Add(false);
-            }
-            isBuilt.Add(temp);
-        }
+        spawnManager = FindObjectOfType<SpawnManager>();
     }
 
     public void SpawnTower(Vector3Int tileIntPos)
     {
-        // Tile tile = tileTransform.GetComponent<Tile>();
-
-        // if (tile.IsBuildTower == true) //건설됨이면 건설x
-        // {
-        //     return;
-        // }
-
-        // tile.IsBuildTower = true; //건설됨 설정
-
-        if (isBuilt[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin])
-        {
-            return;
-        }
-        isBuilt[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin] = true;
-
-        var tilePos = ground.CellToWorld(tileIntPos + Vector3Int.up + Vector3Int.right);
-
-        var tower = Instantiate(
-            towerPrefab,
-            new Vector3(tilePos.x, tilePos.y, -3f),
-            Quaternion.identity
-        ); //타워 건설
-        tower.GetComponent<Tower>().tilePosition = tileIntPos;
+        var tower = spawnManager.SpawnObject(tileIntPos, towerPrefab);
+        if (tower != null)
+            tower.GetComponent<Tower>().tilePosition = tileIntPos;
     }
 }

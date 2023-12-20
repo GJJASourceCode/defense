@@ -17,7 +17,8 @@ public class Mob : MonoBehaviour
         currentHP = maxHP;
     }
 
-    void Start() {
+    void Start()
+    {
         healthBar = GetComponentInChildren<HealthBar>();
     }
 

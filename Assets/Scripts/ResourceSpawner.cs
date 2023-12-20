@@ -1,44 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ResourceSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Resource;
+    private GameObject resource;
     public float spawnTime = 3f; // 생성주기
-    public float curTime; // 현재 시간
-    public Transform[] spawnPoints; // 생성위치
-    public bool[] isSpawn;
-
-    private void Start()
-    {
-        isSpawn = new bool[spawnPoints.Length];
-        for (int i = 0; i < isSpawn.Length; i++)
-            isSpawn[i] = false;
-    }
+    private float time; // 현재 시간
 
     private void Update()
     {
-        if (curTime >= spawnTime)
+        if (time >= spawnTime)
         {
-            curTime = 0;
-            int x = Random.Range(0, spawnPoints.Length);
-            if (isSpawn[x]) // x위치에 자원 있으면 생성no
-            {
-                curTime = spawnTime;
-                return;
-            }
-            SpawnResource(x);
+            time = 0;
+            FindObjectOfType<SpawnManager>().SpawnObjectAtRandomPos(resource);
         }
 
-        curTime += Time.deltaTime;
-    }
-
-    private void SpawnResource(int ranNum) //자원 생성
-    {
-        curTime = 0;
-        Instantiate(Resource, spawnPoints[ranNum]);
-        isSpawn[ranNum] = true;
+        time += Time.deltaTime;
     }
 }
