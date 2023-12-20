@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteInEditMode] //코드 상시실행
 public class IsometricZ : MonoBehaviour
 {
-    void Start()
+    void Update()
     {
         transform.position = new Vector3(
             transform.position.x,
