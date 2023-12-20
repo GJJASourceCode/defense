@@ -11,19 +11,17 @@ public class ResourceSpawner : MonoBehaviour
     public Transform[] spawnPoints; // 생성위치
     public bool[] isSpawn;
 
-
     private void Start()
     {
         isSpawn = new bool[spawnPoints.Length];
-        for(int i = 0; i < isSpawn.Length; i++) isSpawn[i] = false;
-
+        for (int i = 0; i < isSpawn.Length; i++)
+            isSpawn[i] = false;
     }
 
     private void Update()
     {
         if (curTime >= spawnTime)
         {
-            
             int x = Random.Range(0, spawnPoints.Length);
             if (isSpawn[x]) // x위치에 자원 있으면 생성no
             {
