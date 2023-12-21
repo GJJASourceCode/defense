@@ -15,6 +15,7 @@ public class MobSpawner : MonoBehaviour
     private float timeforPath = 0f;
 
     public List<Mob> mobList;
+    public int waveMobCount = 0; // 한 웨이브에 소환된 몹 개수
     private PathFinding pathFinding;
 
     [SerializeField]
@@ -24,10 +25,14 @@ public class MobSpawner : MonoBehaviour
     private TileBase pathTile;
 
     private List<Node> path;
+    private GameManager gameManager;
+    private UIManager uiManager;
 
     void Awake()
     {
         mobList = new List<Mob>();
+        gameManager = FindObjectOfType<GameManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     void Start()
@@ -37,6 +42,8 @@ public class MobSpawner : MonoBehaviour
 
     void Update()
     {
+        if (gameManager.isPaused)
+            return;
         timeforSpawn += Time.deltaTime;
         timeforPath += Time.deltaTime;
 
@@ -44,10 +51,16 @@ public class MobSpawner : MonoBehaviour
         {
             timeforSpawn = 0f;
 
-            var random = mobPrefabs[Random.Range(0,mobPrefabs.Count)];
+            var random = spawnableMobIndexes[Random.Range(0, spawnableMobIndexes.Count)];
 
-            var mob = Instantiate(random, transform.position - Vector3.up*0.25f, Quaternion.identity);
+            var mob = Instantiate(
+                mobPrefabs[random],
+                transform.position - Vector3.up * 0.25f,
+                Quaternion.identity
+            );
             mobList.Add(mob.GetComponent<Mob>());
+            waveMobCount++;
+            uiManager.UpdateWave();
         }
 
         if (timeforPath >= showPathTime)

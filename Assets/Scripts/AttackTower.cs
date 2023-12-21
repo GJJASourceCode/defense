@@ -19,15 +19,19 @@ public class AttackTower : MonoBehaviour
     private MobSpawner mobSpawner;
     private Tower tower;
     private float time;
+    private GameManager gameManager;
 
     void Start()
     {
         mobSpawner = FindObjectOfType<MobSpawner>();
         tower = GetComponent<Tower>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
+        if (gameManager.isPaused)
+            return;
         time += Time.deltaTime;
         if (time >= attackSpeed)
         {

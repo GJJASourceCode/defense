@@ -100,10 +100,16 @@ MonoBehaviour:
   mobPrefabs:
   - {fileID: 565497748725283736, guid: 8a310bc833e7799458ed25265a25b682, type: 3}
   - {fileID: 4834874833053494191, guid: 3f34ecef697e018459fada22f836a0fe, type: 3}
+  - {fileID: 306633227917861698, guid: 872193f1ff073a94db0c394af05204a5, type: 3}
+  - {fileID: 3283457397436222651, guid: 247a3c28110f72a4abc4167efbdfacf7, type: 3}
+  - {fileID: 747254520945026521, guid: 8d132d4fc563ab14397b5cda6801e82d, type: 3}
   - {fileID: 4895672968322761967, guid: e8afdc15f425946429aa4c2a1f8490f3, type: 3}
-  spawnableMobIndexes: 000000000100000002000000
+  - {fileID: 2108648172908233855, guid: 74a4de76c022bfa42a2216b3339c74c9, type: 3}
+  - {fileID: 2029016125043367682, guid: 88d48d4b6dee7f741b6adedc7d461847, type: 3}
+  spawnableMobIndexes: 0000000001000000
   spawnTime: 3
   showPathTime: 5
   mobList: []
+  waveMobCount: 0
   defaultTile: {fileID: 11400000, guid: 87ecd583791ad654488131ddf182b833, type: 2}
   pathTile: {fileID: 11400000, guid: fda2f57eac7c6b14b8e82488048fb726, type: 2}

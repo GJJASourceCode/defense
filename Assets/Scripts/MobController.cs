@@ -9,24 +9,23 @@ public class MobController : MonoBehaviour
     private GameObject house;
     public float speed;
 
-
     private Vector3Int startPos;
     private Vector3Int targetPos;
     private Vector2 moveTarget;
     private List<Node> path = null;
     private Mob mob;
+    private GameManager gameManager;
 
     void OnEnable()
     {
+        gameManager = FindObjectOfType<GameManager>();
         pathFinding = GameObject.Find("PathFinder").GetComponent<PathFinding>();
         // mobSpawner = GameObject.Find("MobSpawner");
         house = GameObject.Find("House");
         mob = GetComponent<Mob>();
 
         moveTarget = new Vector2(transform.position.x, transform.position.y);
-        startPos = pathFinding.ground.WorldToCell(
-            transform.position - Vector3.up * 0.75f
-        );
+        startPos = pathFinding.ground.WorldToCell(transform.position - Vector3.up * 0.75f);
         // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
         targetPos = pathFinding.ground.WorldToCell(house.transform.position);
 
@@ -45,12 +44,15 @@ public class MobController : MonoBehaviour
 
     void Update()
     {
+        if (gameManager.isPaused)
+            return;
         float step = speed * Time.deltaTime;
-        if (path != null) transform.position = Vector2.MoveTowards(transform.position, moveTarget, step);
+        if (path != null)
+            transform.position = Vector2.MoveTowards(transform.position, moveTarget, step);
         if (Vector2.Distance(moveTarget, transform.position) <= 0.1f)
         {
             startPos = pathFinding.ground.WorldToCell(
-                transform.position + new Vector3(0,-0.15f,0)
+                transform.position + new Vector3(0, -0.15f, 0)
             );
             // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
             path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
@@ -60,7 +62,7 @@ public class MobController : MonoBehaviour
             }
             else if (path.Count == 1) // 집 도착
             {
-                // TODO: 집 데미지 구현
+                gameManager.AttackHouse();
                 Destroy(gameObject);
             }
             else
@@ -71,5 +73,4 @@ public class MobController : MonoBehaviour
             }
         }
     }
-    
 }

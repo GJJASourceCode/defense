@@ -5,4 +5,5 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public Vector3Int tilePosition;
+    public int price;
 }

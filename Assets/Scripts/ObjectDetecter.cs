@@ -20,7 +20,7 @@ public class ObjectDetecter : MonoBehaviour
             if (ground.GetTile(pos) != null)
             {
                 towerSpawner.SpawnTower(pos);
-                Debug.Log(pos);
+                // Debug.Log(pos);
             }
         }
     }
