@@ -22,6 +22,7 @@ public class Resource : MonoBehaviour
             if (spawnManager.GetObject(pos)== this.gameObject)
             {
                spawnManager.RemoveObject(pos);
+               ResourceText.resourceValue++;
             }
         }
     }
