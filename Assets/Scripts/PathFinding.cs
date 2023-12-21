@@ -118,7 +118,7 @@ public class PathFinding : MonoBehaviour
             && checkX <= maxX
             && checkY >= 0
             && checkY <= maxY
-            && !graph[checkX][checkY].isWall
+            && !graph[checkX][checkY].isBuilt
             && !closedList.Contains(graph[checkX][checkY])
         )
         {

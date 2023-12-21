@@ -6,14 +6,14 @@ using UnityEngine.Tilemaps;
 [System.Serializable]
 public class Node
 {
-    public Node(bool _isWall, int _x, int _y)
+    public Node(bool _isBuilt, int _x, int _y)
     {
-        isWall = _isWall;
+        isBuilt = _isBuilt;
         x = _x;
         y = _y;
     }
 
-    public bool isWall;
+    public bool isBuilt;
     public Node ParentNode;
 
     // G : 시작으로부터 이동했던 거리, H : |가로|+|세로| 장애물 무시하여 목표까지의 거리, F : G + H
@@ -39,7 +39,7 @@ public class Ground : MonoBehaviour
         for (int x = bounds.xMin; x <= bounds.xMax; x++)
         {
             List<Node> temp = new List<Node>();
-            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            for (int y = bounds.yMin; y <= bounds.yMax; y++)
             {
                 TileBase tile = ground.GetTile(new Vector3Int(x, y, 0));
                 if (tile != null)
