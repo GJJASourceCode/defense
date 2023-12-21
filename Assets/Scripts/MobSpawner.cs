@@ -61,7 +61,7 @@ public class MobSpawner : MonoBehaviour
 
     private void ShowPath()
     {
-        var startPos = pathFinding.ground.WorldToCell(transform.position - Vector3.up * 0.5f);
+        var startPos = pathFinding.ground.WorldToCell(transform.position - Vector3.up * 1f);
         var house = GameObject.Find("House");
         var targetPos = pathFinding.ground.WorldToCell(house.transform.position);
 
