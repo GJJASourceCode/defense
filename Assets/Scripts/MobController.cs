@@ -16,8 +16,6 @@ public class MobController : MonoBehaviour
     private List<Node> path = null;
     private Mob mob;
 
-    public GameObject testPrefab;
-
     void OnEnable()
     {
         pathFinding = GameObject.Find("PathFinder").GetComponent<PathFinding>();
@@ -56,9 +54,14 @@ public class MobController : MonoBehaviour
             );
             // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
             path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
-            if (path == null || path.Count == 1)
+            if (path == null)
             {
                 Debug.Log("Can't Find Path");
+            }
+            else if (path.Count == 1) // 집 도착
+            {
+                // TODO: 집 데미지 구현
+                Destroy(gameObject);
             }
             else
             {

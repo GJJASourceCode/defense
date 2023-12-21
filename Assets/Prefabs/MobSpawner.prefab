@@ -97,7 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b058cffd8803db42b8cff9d4f937178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobPrefab: {fileID: 565497748725283736, guid: 8a310bc833e7799458ed25265a25b682, type: 3}
+  mobPrefabs:
+  - {fileID: 565497748725283736, guid: 8a310bc833e7799458ed25265a25b682, type: 3}
+  - {fileID: 4834874833053494191, guid: 3f34ecef697e018459fada22f836a0fe, type: 3}
+  - {fileID: 4895672968322761967, guid: e8afdc15f425946429aa4c2a1f8490f3, type: 3}
+  spawnableMobIndexes: 000000000100000002000000
   spawnTime: 3
   showPathTime: 5
   mobList: []

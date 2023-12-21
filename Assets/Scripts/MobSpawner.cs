@@ -5,7 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class MobSpawner : MonoBehaviour
 {
-    public GameObject mobPrefab;
+    public List<GameObject> mobPrefabs;
+    public List<int> spawnableMobIndexes;
     public float spawnTime;
 
     private float timeforSpawn = 0f;
@@ -43,7 +44,9 @@ public class MobSpawner : MonoBehaviour
         {
             timeforSpawn = 0f;
 
-            var mob = Instantiate(mobPrefab, transform.position - Vector3.up*0.25f, Quaternion.identity);
+            var random = mobPrefabs[Random.Range(0,mobPrefabs.Count)];
+
+            var mob = Instantiate(random, transform.position - Vector3.up*0.25f, Quaternion.identity);
             mobList.Add(mob.GetComponent<Mob>());
         }
 
