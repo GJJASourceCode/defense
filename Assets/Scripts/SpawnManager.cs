@@ -32,6 +32,15 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+    public GameObject GetObject(Vector3Int tileIntPos)
+    {
+        if (tileIntPos.x<cellBounds.xMin||tileIntPos.x>cellBounds.xMax||tileIntPos.y<cellBounds.yMin||tileIntPos.y>cellBounds.yMax||!isBuilt[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin])
+        {
+            return null;
+        }
+        return building[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin];
+    }
+
     public GameObject SpawnObject(Vector3Int tileIntPos, GameObject prefab)
     {
         if (tileIntPos.x<cellBounds.xMin||tileIntPos.x>cellBounds.xMax||tileIntPos.y<cellBounds.yMin||tileIntPos.y>cellBounds.yMax||isBuilt[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin])
