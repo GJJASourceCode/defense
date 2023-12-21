@@ -27,9 +27,9 @@ public class MobController : MonoBehaviour
 
         moveTarget = new Vector2(transform.position.x, transform.position.y);
         startPos = pathFinding.ground.WorldToCell(
-            transform.position + new Vector3(0,-0.25f,0)
+            transform.position - Vector3.up * 0.75f
         );
-        FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
+        // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
         targetPos = pathFinding.ground.WorldToCell(house.transform.position);
 
         path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
@@ -40,34 +40,33 @@ public class MobController : MonoBehaviour
         else
         {
             mob.tilePosition = path[0];
-            var temp = pathFinding.ground.CellToWorld(new Vector3Int(path[1].x, path[1].y, 0));
-            moveTarget = new Vector2(temp.x, temp.y + 0.25f);
+            var temp = pathFinding.ground.CellToWorld(new Vector3Int(path[0].x, path[0].y, 0));
+            moveTarget = new Vector2(temp.x, temp.y + 0.15f);
         }
     }
 
     void Update()
     {
-        if (path != null)
+        float step = speed * Time.deltaTime;
+        if (path != null) transform.position = Vector2.MoveTowards(transform.position, moveTarget, step);
+        if (Vector2.Distance(moveTarget, transform.position) <= 0.1f)
         {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, moveTarget, step);
-            if (Vector2.Distance(moveTarget, transform.position) <= 0.02f)
+            startPos = pathFinding.ground.WorldToCell(
+                transform.position + new Vector3(0,-0.15f,0)
+            );
+            // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
+            path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
+            if (path == null || path.Count == 1)
             {
-                startPos = pathFinding.ground.WorldToCell(
-                    transform.position + new Vector3(0,-1f,0)
-                );
-                path = pathFinding.FindPath(startPos.x, startPos.y, targetPos.x, targetPos.y);
-                if (path == null)
-                {
-                    Debug.Log("Can't Find Path");
-                }
-                else
-                {
-                    mob.tilePosition = path[0];
-                    var temp = pathFinding.ground.CellToWorld(new Vector3Int(path[1].x, path[1].y, 0));
-                    moveTarget = new Vector2(temp.x, temp.y + 0.25f);
-                }
+                Debug.Log("Can't Find Path");
+            }
+            else
+            {
+                mob.tilePosition = path[0];
+                var temp = pathFinding.ground.CellToWorld(new Vector3Int(path[1].x, path[1].y, 0));
+                moveTarget = new Vector2(temp.x, temp.y + 0.15f);
             }
         }
     }
+    
 }

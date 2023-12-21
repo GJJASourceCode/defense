@@ -43,7 +43,7 @@ public class MobSpawner : MonoBehaviour
         {
             timeforSpawn = 0f;
 
-            var mob = Instantiate(mobPrefab, transform.position, Quaternion.identity);
+            var mob = Instantiate(mobPrefab, transform.position - Vector3.up*0.25f, Quaternion.identity);
             mobList.Add(mob.GetComponent<Mob>());
         }
 
