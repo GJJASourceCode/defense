@@ -111,5 +111,6 @@ public class GameManager : MonoBehaviour
         maxWaveMobCount = 10;
         var temp = new List<int> { 2 };
         mobSpawner.spawnableMobIndexes = temp;
+        mobSpawner.SpawnBoss(0); // 첫번재 보스 소환
     }
 }

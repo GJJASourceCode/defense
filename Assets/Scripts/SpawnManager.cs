@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
         var tilePos = ground.CellToWorld(tileIntPos + Vector3Int.up + Vector3Int.right);
         building[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin] = Instantiate(
             prefab,
-            new Vector3(tilePos.x, tilePos.y, -3f),
+            new Vector3(tilePos.x, tilePos.y-0.05f, -3f),
             Quaternion.identity
         );
         return building[tileIntPos.x - cellBounds.xMin][tileIntPos.y - cellBounds.yMin];

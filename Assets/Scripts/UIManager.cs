@@ -8,17 +8,33 @@ public class UIManager : MonoBehaviour
 {
     public Text resourceText;
     public Text waveText;
+    // public Text towerPriceText;
+    public List<Button> towerSelectButtonList;
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
+    private TowerSpawner towerSpawner;
+    private Tower tower;
 
     public List<GameObject> heart;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        towerSpawner = FindObjectOfType<TowerSpawner>();
         UpdateHP();
         UpdateMoney();
         StartCoroutine(LazyStart());
+        for (int i = 0; i < towerSelectButtonList.Count; i++)
+        {
+            int j = i;
+            towerSelectButtonList[j].onClick.AddListener(delegate{SelectTower(j);});
+        }
+    }
+
+    private void SelectTower(int index)
+    {
+        Debug.Log(index);
+        towerSpawner.towerIndex = index;
     }
 
     public void UpdateMoney()
@@ -44,10 +60,18 @@ public class UIManager : MonoBehaviour
     public void UpdateWave()
     {
         waveText.text =
-            "현재 웨이브 : "
+            "Wave "
             + gameManager.wave
-            + "\n 다음 웨이브까지 남은 몹 수 : "
-            + (gameManager.maxWaveMobCount - mobSpawner.waveMobCount);
+            + "\nNext Wave "
+            + (gameManager.maxWaveMobCount - mobSpawner.waveMobCount)
+            +" / "
+            + gameManager.maxWaveMobCount;
+    }
+    
+    public void UpdatePrice(int price)
+    {
+        // towerPriceText.text = price.ToString();
+        //TODO 가격 업데이트 만들기
     }
 
     IEnumerator LazyStart()
