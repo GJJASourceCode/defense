@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
-            //TODO: 일시정지 UI만들기
+            uiManager.PauseImage(isPaused);
         }
 
         if (wave == 1)

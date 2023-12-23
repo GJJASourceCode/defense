@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     public List<Button> towerSelectButtonList;
     public List<Image> chekingList;
+    public Image pauseImage;
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
     private TowerSpawner towerSpawner;
@@ -84,6 +85,11 @@ public class UIManager : MonoBehaviour
         towerPriceTextList[index].text = towerSpawner.towerPrefab[index]
             .GetComponent<Tower>()
             .price.ToString();
+    }
+
+    public void PauseImage(bool isPaused)
+    {
+        pauseImage.gameObject.SetActive(isPaused);
     }
 
     IEnumerator LazyStart()
