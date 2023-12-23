@@ -40,8 +40,9 @@ public class UIManager : MonoBehaviour
 
     private void SelectTower(int index)
     {
-        Debug.Log(index);
-        towerSpawner.towerIndex = index;
+        // Debug.Log(index);
+        if (index != 3)
+            towerSpawner.towerIndex = index;
         for (int i = 0; i < chekingList.Count; i++)
         {
             chekingList[i].gameObject.SetActive(false);
