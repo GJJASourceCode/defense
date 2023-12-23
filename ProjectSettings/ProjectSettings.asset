@@ -769,11 +769,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6109fa7d-2090-4d9f-9653-109872924cd5
+  cloudProjectId: 6f215c14-052b-4e94-ba3c-91a78dd6ecf2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: defence
+  organizationId: jindoss
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

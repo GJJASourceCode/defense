@@ -12,7 +12,7 @@ using UnityEngine.Tilemaps;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> towerPrefab;
+    public List<GameObject> towerPrefab;
 
     public int towerIndex;
 
@@ -31,14 +31,15 @@ public class TowerSpawner : MonoBehaviour
         spawnManager = FindObjectOfType<SpawnManager>();
         uiManager = FindObjectOfType<UIManager>();
         prices = new List<int>();
-        for (int i = 0; i < towerPrefab.Count;i++)
+        for (int i = 0; i < towerPrefab.Count; i++)
         {
             prices.Add(towerPrefab[i].GetComponent<Tower>().price);
         }
     }
 
-    void OnDisable() {
-        for (int i = 0; i < towerPrefab.Count;i++)
+    void OnDisable()
+    {
+        for (int i = 0; i < towerPrefab.Count; i++)
         {
             towerPrefab[i].GetComponent<Tower>().price = prices[i];
         }
@@ -46,19 +47,18 @@ public class TowerSpawner : MonoBehaviour
 
     public void SpawnTower(Vector3Int tileIntPos)
     {
-        
         var tower = spawnManager.SpawnObject(tileIntPos, towerPrefab[towerIndex]);
         if (tower != null)
         {
             if (gameManager.money >= tower.GetComponent<Tower>().price)
             {
+                int towerNum = towerIndex;
                 tower.GetComponent<Tower>().tilePosition = tileIntPos;
                 gameManager.money -= tower.GetComponent<Tower>().price;
                 towerPrefab[towerIndex].GetComponent<Tower>().price += 1;
 
                 uiManager.UpdateMoney();
-                
-                
+                uiManager.UpdatePrice(towerNum);
             }
             else
             {

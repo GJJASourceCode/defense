@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2951145281809194183}
   - component: {fileID: 3806835663072941153}
   m_Layer: 0
-  m_Name: SlowTower
+  m_Name: SlowTowerLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

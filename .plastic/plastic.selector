@@ -1,4 +1,4 @@
-repository "defence@seonjin6804@cloud"
+repository "defence@DefenseGameTeam@cloud"
   path "/"
     br "/main"
     co "/main"

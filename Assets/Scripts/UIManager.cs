@@ -8,12 +8,13 @@ public class UIManager : MonoBehaviour
 {
     public Text resourceText;
     public Text waveText;
-    // public Text towerPriceText;
+    public List<Text> towerPriceTextList;
+
     public List<Button> towerSelectButtonList;
+    public List<Image> chekingList;
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
     private TowerSpawner towerSpawner;
-    private Tower tower;
 
     public List<GameObject> heart;
 
@@ -27,7 +28,12 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < towerSelectButtonList.Count; i++)
         {
             int j = i;
-            towerSelectButtonList[j].onClick.AddListener(delegate{SelectTower(j);});
+            towerSelectButtonList[j].onClick.AddListener(
+                delegate
+                {
+                    SelectTower(j);
+                }
+            );
         }
     }
 
@@ -35,6 +41,11 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log(index);
         towerSpawner.towerIndex = index;
+        for (int i = 0; i < chekingList.Count; i++)
+        {
+            chekingList[i].gameObject.SetActive(false);
+        }
+        chekingList[index].gameObject.SetActive(true);
     }
 
     public void UpdateMoney()
@@ -64,14 +75,15 @@ public class UIManager : MonoBehaviour
             + gameManager.wave
             + "\nNext Wave "
             + (gameManager.maxWaveMobCount - mobSpawner.waveMobCount)
-            +" / "
+            + " / "
             + gameManager.maxWaveMobCount;
     }
-    
-    public void UpdatePrice(int price)
+
+    public void UpdatePrice(int index)
     {
-        // towerPriceText.text = price.ToString();
-        //TODO 가격 업데이트 만들기
+        towerPriceTextList[index].text = towerSpawner.towerPrefab[index]
+            .GetComponent<Tower>()
+            .price.ToString();
     }
 
     IEnumerator LazyStart()

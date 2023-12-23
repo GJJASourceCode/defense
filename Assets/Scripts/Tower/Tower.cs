@@ -16,13 +16,11 @@ public abstract class Tower : MonoBehaviour
 
     private bool canAttack = true;
 
-
     public virtual void Start()
     {
         mobSpawner = FindObjectOfType<MobSpawner>();
         gameManager = FindObjectOfType<GameManager>();
     }
-
 
     void Update()
     {
@@ -44,12 +42,12 @@ public abstract class Tower : MonoBehaviour
                 }
             }
             if (attackableMob.Count != 0)
-                {
-                    Attack(attackableMob);
-                    canAttack = false;
-                    StartCoroutine(AttackDelay());
-                }
+            {
+                Attack(attackableMob);
+                canAttack = false;
+                StartCoroutine(AttackDelay());
             }
+        }
     }
 
     public abstract void Attack(List<Mob> attackableMob);

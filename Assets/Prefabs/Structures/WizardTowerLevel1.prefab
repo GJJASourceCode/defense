@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8514785487041449113}
   - component: {fileID: 8312189613415384163}
   m_Layer: 0
-  m_Name: WizardTower
+  m_Name: WizardTowerLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  price: 1
+  price: 2
   attackDamage: 10
   attackDelay: 1.5
   attackRange: 1.5
