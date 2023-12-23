@@ -750,7 +750,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124627439}
         m_TargetAssemblyTypeName: GameScenesMove, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GameScenesCtrl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1701,7 +1701,6 @@ GameObject:
   - component: {fileID: 2124627437}
   - component: {fileID: 2124627436}
   - component: {fileID: 2124627435}
-  - component: {fileID: 2124627434}
   - component: {fileID: 2124627439}
   m_Layer: 5
   m_Name: Canvas
