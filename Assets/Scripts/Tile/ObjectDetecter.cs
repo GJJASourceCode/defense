@@ -19,8 +19,10 @@ public class ObjectDetecter : MonoBehaviour
             Vector3Int pos = ground.WorldToCell(new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0));
             if (ground.GetTile(pos) != null)
             {
-                towerSpawner.SpawnTower(pos);
-                // Debug.Log(pos);
+                if (towerSpawner.towerIndex != 3)
+                    towerSpawner.SpawnTower(pos);
+                else if (towerSpawner.towerIndex == 3)
+                    towerSpawner.TowerUpgrade(pos);
             }
         }
     }

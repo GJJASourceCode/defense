@@ -67,8 +67,10 @@ public class TowerSpawner : MonoBehaviour
         }
     }
 
-    public void TowerUpgrade()
+    public void TowerUpgrade(Vector3Int tileIntPos)
     {
-        //TODO: 타워 강화 만들기
+        var tower = spawnManager.GetObject(tileIntPos);
+        if (tower != null)
+            Debug.Log("Upgrade");
     }
 }
