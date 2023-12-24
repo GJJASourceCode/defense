@@ -8,10 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public Text resourceText;
     public Text waveText;
+    public Text UpgradePriceText;
     public List<Text> towerPriceTextList;
 
     public List<Button> towerSelectButtonList;
     public List<Image> chekingList;
+    public List<Image> UpgradeBeforeImageList;
+    public List<Image> UpgradeAfterImageList;
+
     public Image pauseImage;
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
@@ -91,6 +95,14 @@ public class UIManager : MonoBehaviour
     public void PauseImage(bool isPaused)
     {
         pauseImage.gameObject.SetActive(isPaused);
+    }
+
+    public void UpgradeImage(Vector3Int tileIntPos)
+    {
+        // if()
+        // {
+
+        // }
     }
 
     IEnumerator LazyStart()
