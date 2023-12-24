@@ -2,31 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public Text resourceText;
     public Text waveText;
-    public Text UpgradePriceText;
     public List<Text> towerPriceTextList;
 
     public List<Button> towerSelectButtonList;
     public List<Image> chekingList;
-    public List<Image> UpgradeBeforeImageList;
-    public List<Image> UpgradeAfterImageList;
+
+    public RectTransform upgradePanel;
+    public List<Sprite> upgradeAfterSpriteList;
+    public Image afterUpgradeImage;
+    public Text upgradePriceText;
 
     public Image pauseImage;
+
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
     private TowerSpawner towerSpawner;
+    private SpawnManager spawnManager;
 
     public List<GameObject> heart;
+    public Tilemap ground;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         towerSpawner = FindObjectOfType<TowerSpawner>();
+        spawnManager = FindObjectOfType<SpawnManager>();
         UpdateHP();
         UpdateMoney();
         StartCoroutine(LazyStart());
@@ -99,10 +106,64 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeImage(Vector3Int tileIntPos)
     {
-        // if()
-        // {
+        if (ground.GetTile(tileIntPos) == null)
+        {
+            upgradePanel.gameObject.SetActive(false);
+            return;
+        }
+        var tileObject = spawnManager.GetObject(tileIntPos);
+        if (tileObject == null)
+        {
+            upgradePanel.gameObject.SetActive(false);
+            return;
+        }
+        if (tileObject.TryGetComponent(out Tower tower))
+        {
+            upgradePanel.gameObject.SetActive(true);
+            var parentCanvas = upgradePanel.gameObject.GetComponentInParent<Canvas>();
+            Vector2 movePos;
 
-        // }
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                parentCanvas.transform as RectTransform,
+                Input.mousePosition + Vector3.right * 150f,
+                parentCanvas.worldCamera,
+                out movePos
+            );
+
+            upgradePanel.transform.position = parentCanvas.transform.TransformPoint(movePos);
+            if (tileObject.TryGetComponent<ArcherTower>(out ArcherTower a) == true)
+            {
+                if (a.level == 1)
+                    afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[0];
+                else if (a.level == 2)
+                    afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[1];
+                else if (a.level == 3)
+                {
+                    upgradePanel.gameObject.SetActive(false);
+                    return;
+                }
+            }
+            else if (tower.TryGetComponent<WizardTower>(out WizardTower w) == true)
+            {
+                if (w.level == 1)
+                    afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[2];
+                if (w.level == 2)
+                    afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[3];
+                else if (w.level == 3)
+                {
+                    upgradePanel.gameObject.SetActive(false);
+                    return;
+                }
+            }
+            else if (tower.TryGetComponent<SlowTower>(out SlowTower s) == true)
+                if (s.level == 1)
+                    afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[4];
+                else if (s.level == 2)
+                {
+                    upgradePanel.gameObject.SetActive(false);
+                    return;
+                }
+        }
     }
 
     IEnumerator LazyStart()

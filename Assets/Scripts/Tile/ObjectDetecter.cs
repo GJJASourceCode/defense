@@ -11,29 +11,40 @@ public class ObjectDetecter : MonoBehaviour
     [SerializeField]
     private Tilemap ground;
     private UIManager uiManager;
+    private SpawnManager spawnManager;
+
+    private void Start()
+    {
+        uiManager = FindObjectOfType<UIManager>();
+        spawnManager = FindObjectOfType<SpawnManager>();
+    }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) //좌클
+        if (towerSpawner.towerIndex < 8)
         {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int pos = ground.WorldToCell(new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0));
-            if (ground.GetTile(pos) != null)
+            if (Input.GetMouseButtonDown(0)) //좌클
             {
-                if (towerSpawner.towerIndex != 3)
-                    towerSpawner.SpawnTower(pos);
-                else if (towerSpawner.towerIndex == 3)
-                    towerSpawner.TowerUpgrade(pos);
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int pos = ground.WorldToCell(
+                    new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0)
+                );
+                if (ground.GetTile(pos) != null)
+                {
+                    if (towerSpawner.towerIndex != 3)
+                        towerSpawner.SpawnTower(pos);
+                    else if (towerSpawner.towerIndex == 3)
+                        towerSpawner.TowerUpgrade(pos);
+                }
             }
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int pos = ground.WorldToCell(new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0));
-            if (ground.GetTile(pos) != null)
+            else if (towerSpawner.towerIndex == 3)
             {
-                if (towerSpawner.towerIndex == 3)
-                    uiManager.UpgradeImage(pos);
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int pos = ground.WorldToCell(
+                    new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0)
+                );
+
+                uiManager.UpgradeImage(pos);
             }
         }
     }

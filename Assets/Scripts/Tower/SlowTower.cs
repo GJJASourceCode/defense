@@ -16,20 +16,22 @@ public class SlowTower : Tower
     public override void Attack(List<Mob> attackableMob)
     {
         ice.Play();
-        foreach(var mob in attackableMob)
+        foreach (var mob in attackableMob)
         {
-            StartCoroutine(ReturnSpeedToOriginal(mob));
-            mob.GetComponent<MobController>().speed *= slow;
+            if (mob != null)
+            {
+                StartCoroutine(ReturnSpeedToOriginal(mob));
+                mob.GetComponent<MobController>().speed *= slow;
+            }
         }
     }
-
 
     IEnumerator ReturnSpeedToOriginal(Mob mob)
     {
         yield return new WaitForSeconds(attackDelay);
-        if (mob !=null)
+        if (mob != null)
         {
-        mob.GetComponent<MobController>().speed /= slow;   
+            mob.GetComponent<MobController>().speed /= slow;
         }
     }
 }
