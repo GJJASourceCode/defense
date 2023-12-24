@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource: {fileID: 8028752685425758186, guid: e840bbf4fff79a848939ae50af9c79c9, type: 3}
-  spawnTime: 3
+  spawnTime: 1
 --- !u!4 &59504134
 Transform:
   m_ObjectHideFlags: 0
@@ -939,6 +939,11 @@ MonoBehaviour:
   - {fileID: 4280852114963924483, guid: bd889af9bacec584a81eca200f972d19, type: 3}
   - {fileID: 2672550605360921175, guid: 6eff648ccb203f34ab4afd16616f23f7, type: 3}
   - {fileID: 3279129204791598037, guid: 4ce67b298c4b0b54b8078d3640c50db3, type: 3}
+  - {fileID: 73451466685806339, guid: 2d6abb7b755238b40b1291bf0e4c6b1c, type: 3}
+  - {fileID: 381818727946245026, guid: 02ad1b91bfc393d468e3ec19245ff1c1, type: 3}
+  - {fileID: 3319732391530092540, guid: 8190f98129107ac46809a610f6f71235, type: 3}
+  - {fileID: 795343019426323636, guid: 2a52d4301b9eedd42a63e351d93b4d0c, type: 3}
+  - {fileID: 1455678266094598477, guid: dbf02b19241a63f4a89528246b6f280b, type: 3}
   towerIndex: 4
   ground: {fileID: 1831947674}
 --- !u!1 &452349118

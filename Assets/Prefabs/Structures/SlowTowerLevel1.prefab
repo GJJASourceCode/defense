@@ -100,11 +100,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
   price: 3
+  level: 1
   attackDamage: 0
   attackDelay: 0.1
   attackRange: 2
   detectDelay: 0.1
-  slow: 0.1
+  slow: 0.6
 --- !u!1001 &2785394757186908360
 PrefabInstance:
   m_ObjectHideFlags: 0

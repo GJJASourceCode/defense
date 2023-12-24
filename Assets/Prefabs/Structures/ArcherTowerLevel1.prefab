@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
   price: 1
+  level: 1
   attackDamage: 5
   attackDelay: 1
   attackRange: 2

@@ -71,6 +71,60 @@ public class TowerSpawner : MonoBehaviour
     {
         var tower = spawnManager.GetObject(tileIntPos);
         if (tower != null)
-            Debug.Log("Upgrade");
+        {
+            if (tower.TryGetComponent<ArcherTower>(out ArcherTower a) == true)
+            {
+                if (a.level == 1 && gameManager.money >= towerPrefab[3].GetComponent<Tower>().price)
+                {
+                    spawnManager.RemoveObject(tileIntPos);
+                    var newTower = spawnManager.SpawnObject(tileIntPos, towerPrefab[3]);
+                    gameManager.money -= newTower.GetComponent<Tower>().price;
+                    newTower.GetComponent<Tower>().tilePosition = tileIntPos;
+                    uiManager.UpdateMoney();
+                }
+                else if (
+                    a.level == 2 && gameManager.money >= towerPrefab[4].GetComponent<Tower>().price
+                )
+                {
+                    spawnManager.RemoveObject(tileIntPos);
+                    var newTower = spawnManager.SpawnObject(tileIntPos, towerPrefab[4]);
+                    gameManager.money -= newTower.GetComponent<Tower>().price;
+                    newTower.GetComponent<Tower>().tilePosition = tileIntPos;
+                    uiManager.UpdateMoney();
+                }
+            }
+            else if (tower.TryGetComponent<WizardTower>(out WizardTower w) == true)
+            {
+                if (w.level == 1 && gameManager.money >= towerPrefab[5].GetComponent<Tower>().price)
+                {
+                    spawnManager.RemoveObject(tileIntPos);
+                    var newTower = spawnManager.SpawnObject(tileIntPos, towerPrefab[5]);
+                    gameManager.money -= newTower.GetComponent<Tower>().price;
+                    newTower.GetComponent<Tower>().tilePosition = tileIntPos;
+                    uiManager.UpdateMoney();
+                }
+                else if (
+                    w.level == 2 && gameManager.money >= towerPrefab[6].GetComponent<Tower>().price
+                )
+                {
+                    spawnManager.RemoveObject(tileIntPos);
+                    var newTower = spawnManager.SpawnObject(tileIntPos, towerPrefab[6]);
+                    gameManager.money -= newTower.GetComponent<Tower>().price;
+                    newTower.GetComponent<Tower>().tilePosition = tileIntPos;
+                    uiManager.UpdateMoney();
+                }
+            }
+            else if (
+                tower.TryGetComponent<SlowTower>(out SlowTower s) == true
+                && gameManager.money >= towerPrefab[7].GetComponent<Tower>().price
+            )
+            {
+                spawnManager.RemoveObject(tileIntPos);
+                var newTower = spawnManager.SpawnObject(tileIntPos, towerPrefab[7]);
+                gameManager.money -= newTower.GetComponent<Tower>().price;
+                newTower.GetComponent<Tower>().tilePosition = tileIntPos;
+                uiManager.UpdateMoney();
+            }
+        }
     }
 }

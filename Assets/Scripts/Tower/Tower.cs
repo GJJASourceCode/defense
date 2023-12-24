@@ -6,6 +6,7 @@ public abstract class Tower : MonoBehaviour
 {
     public Vector3Int tilePosition;
     public int price;
+    public int level;
     public float attackDamage;
     public float attackDelay;
     public float attackRange;
