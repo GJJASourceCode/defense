@@ -5,7 +5,7 @@ using UnityEngine;
 public class MobController : MonoBehaviour
 {
     private PathFinding pathFinding;
-    private GameObject mobSpawner;
+    private MobSpawner mobSpawner;
     private GameObject house;
     public float speed;
 
@@ -19,8 +19,8 @@ public class MobController : MonoBehaviour
     void OnEnable()
     {
         gameManager = FindObjectOfType<GameManager>();
-        pathFinding = GameObject.Find("PathFinder").GetComponent<PathFinding>();
-        // mobSpawner = GameObject.Find("MobSpawner");
+        pathFinding = FindObjectOfType<PathFinding>();
+        mobSpawner = FindObjectOfType<MobSpawner>();
         house = GameObject.Find("House");
         mob = GetComponent<Mob>();
 
@@ -62,7 +62,8 @@ public class MobController : MonoBehaviour
             }
             else if (path.Count == 1) // 집 도착
             {
-                gameManager.AttackHouse();
+                mobSpawner.MobDie(GetComponent<Mob>());
+                gameManager.AttackHouse(1);
                 Destroy(gameObject);
             }
             else

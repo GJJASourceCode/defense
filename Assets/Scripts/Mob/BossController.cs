@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     private PathFinding pathFinding;
-    private GameObject mobSpawner;
+    private MobSpawner mobSpawner;
     private GameObject house;
     public float speed;
 
@@ -21,8 +21,8 @@ public class BossController : MonoBehaviour
     {
         spawnManager = FindObjectOfType<SpawnManager>();
         gameManager = FindObjectOfType<GameManager>();
-        pathFinding = GameObject.Find("PathFinder").GetComponent<PathFinding>();
-        // mobSpawner = GameObject.Find("MobSpawner");
+        pathFinding = FindObjectOfType<PathFinding>();
+        mobSpawner = FindObjectOfType<MobSpawner>();
         house = GameObject.Find("House");
         mob = GetComponent<Mob>();
 
@@ -55,6 +55,12 @@ public class BossController : MonoBehaviour
         );
         if (path != null)
         {
+            var graph = pathFinding.ground.GetComponent<Ground>().GetGraph();
+            mob.tilePosition = graph[currentPos.x - pathFinding.ground.cellBounds.xMin][
+                currentPos.y - pathFinding.ground.cellBounds.yMin
+            ];
+            mob.tilePosition.x = mob.tilePosition.x + pathFinding.ground.cellBounds.xMin;
+            mob.tilePosition.y = mob.tilePosition.y + pathFinding.ground.cellBounds.yMin;
             transform.position = Vector2.MoveTowards(transform.position, moveTarget, step);
             if (
                 spawnManager.GetObject(currentPos) != null
@@ -64,16 +70,13 @@ public class BossController : MonoBehaviour
                 spawnManager.RemoveObject(currentPos);
             }
         }
-        if (Vector2.Distance(moveTarget, transform.position) <= 0.1f)
+        if (Vector2.Distance(moveTarget, transform.position) <= 0.01f)
         {
-            var graph = pathFinding.ground.GetComponent<Ground>().GetGraph();
-            mob.tilePosition = graph[currentPos.x - pathFinding.ground.cellBounds.xMin][
-                currentPos.y - pathFinding.ground.cellBounds.yMin
-            ];
             // FindObjectOfType<SpawnManager>().SpawnObject(startPos, testPrefab);
             if (currentPos == targetPos) // 집 도착
             {
-                gameManager.AttackHouse();
+                mobSpawner.MobDie(GetComponent<Mob>());
+                gameManager.AttackHouse(3);
                 Destroy(gameObject);
             }
             else
