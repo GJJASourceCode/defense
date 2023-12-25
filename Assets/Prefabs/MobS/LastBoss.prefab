@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9133651165072274616}
   - component: {fileID: 8402803828621395921}
   - component: {fileID: 2128485500255650740}
-  - component: {fileID: 1895148526975274204}
+  - component: {fileID: 659794838931807973}
   m_Layer: 0
   m_Name: LastBoss
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029016125043367682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.01, y: -3.08, z: 0}
+  m_LocalPosition: {x: 0, y: 5.502, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -106,7 +106,7 @@ MonoBehaviour:
     G: 0
     H: 0
   maxHP: 10000
---- !u!114 &1895148526975274204
+--- !u!114 &659794838931807973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029016125043367682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7896314087be34b9b65e70af842c48, type: 3}
+  m_Script: {fileID: 11500000, guid: bd34914bdca2b014f8318bc6d5b8ed2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1

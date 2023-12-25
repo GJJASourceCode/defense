@@ -102,7 +102,7 @@ MonoBehaviour:
   price: 0
   level: 2
   attackDamage: 0
-  attackDelay: 0
+  attackDelay: 0.1
   attackRange: 3
   detectDelay: 0.1
   slow: 0.4

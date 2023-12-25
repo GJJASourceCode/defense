@@ -76,6 +76,51 @@ public class GameManager : MonoBehaviour
                 Wave5();
             }
         }
+        else if (wave == 5)
+        {
+            if (mobSpawner.waveMobCount >= maxWaveMobCount)
+            {
+                mobSpawner.waveMobCount = 0;
+                wave++;
+                Wave6();
+            }
+        }
+        else if (wave == 6)
+        {
+            if (mobSpawner.waveMobCount >= maxWaveMobCount)
+            {
+                mobSpawner.waveMobCount = 0;
+                wave++;
+                Wave7();
+            }
+        }
+        else if (wave == 7)
+        {
+            if (mobSpawner.waveMobCount >= maxWaveMobCount)
+            {
+                mobSpawner.waveMobCount = 0;
+                wave++;
+                Wave8();
+            }
+        }
+        else if (wave == 8)
+        {
+            if (mobSpawner.waveMobCount >= maxWaveMobCount)
+            {
+                mobSpawner.waveMobCount = 0;
+                wave++;
+                Wave9();
+            }
+        }
+        else if (wave == 9)
+        {
+            if (mobSpawner.waveMobCount >= maxWaveMobCount)
+            {
+                mobSpawner.waveMobCount = 0;
+                wave++;
+                Wave10();
+            }
+        }
     }
 
     void Wave1()
@@ -112,5 +157,41 @@ public class GameManager : MonoBehaviour
         var temp = new List<int> { 2 };
         mobSpawner.spawnableMobIndexes = temp;
         mobSpawner.SpawnBoss(0); // 첫번재 보스 소환
+    }
+
+    void Wave6()
+    {
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 1, 2 };
+        mobSpawner.spawnableMobIndexes = temp;
+    }
+
+    void Wave7()
+    {
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 1, 2 };
+        mobSpawner.spawnableMobIndexes = temp;
+    }
+
+    void Wave8()
+    {
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 1, 2 };
+        mobSpawner.spawnableMobIndexes = temp;
+    }
+
+    void Wave9()
+    {
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 1, 2 };
+        mobSpawner.spawnableMobIndexes = temp;
+    }
+
+    void Wave10()
+    {
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 1, 2 };
+        mobSpawner.spawnableMobIndexes = temp;
+        mobSpawner.SpawnBoss(1);
     }
 }

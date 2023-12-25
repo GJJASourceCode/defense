@@ -2686,7 +2686,7 @@ MonoBehaviour:
   mobSpawnerPrefab: {fileID: 7179929999153936542, guid: e2169f7d458651e4ebb85bdb2b662dc6, type: 3}
   money: 0
   houseHP: 5
-  wave: 4
+  wave: 1
   maxWaveMobCount: 0
   isPaused: 0
 --- !u!4 &1420599735

@@ -21,8 +21,11 @@ public class SlowTower : Tower
             if (mob != null)
             {
                 StartCoroutine(ReturnSpeedToOriginal(mob));
-                mob.GetComponent<MobController>().speed *= slow;
+                if (mob.TryGetComponent<MobController>(out MobController m) == true)
+                    m.speed *= slow;
             }
+            else if (mob.TryGetComponent<BossController>(out BossController b) == true)
+                b.speed *= slow;
         }
     }
 
@@ -31,7 +34,10 @@ public class SlowTower : Tower
         yield return new WaitForSeconds(attackDelay);
         if (mob != null)
         {
-            mob.GetComponent<MobController>().speed /= slow;
+            if (mob.TryGetComponent<MobController>(out MobController m) == true)
+                m.speed /= slow;
+            else if (mob.TryGetComponent<BossController>(out BossController b) == true)
+                b.speed /= slow;
         }
     }
 }
