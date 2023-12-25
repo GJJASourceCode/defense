@@ -105,11 +105,11 @@ public class MobSpawner : MonoBehaviour
 
     public void SpawnBoss(int index)
     {
-         var mob = Instantiate(
-                bossPrefabs[index],
-                transform.position - Vector3.up * 0.25f,
-                Quaternion.identity
-            );
-            mobList.Add(mob.GetComponent<Mob>());
+        var mob = Instantiate(
+            bossPrefabs[index],
+            transform.position - Vector3.up * 0.25f,
+            Quaternion.identity
+        );
+        mobList.Add(mob.GetComponent<Mob>());
     }
 }

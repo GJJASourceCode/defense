@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
         Wave1();
     }
 
-    public void AttackHouse()
+    public void AttackHouse(int damage)
     {
-        houseHP--;
+        houseHP -= damage;
         uiManager.UpdateHP();
     }
 
