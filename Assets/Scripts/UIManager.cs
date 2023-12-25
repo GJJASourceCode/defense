@@ -134,9 +134,19 @@ public class UIManager : MonoBehaviour
             if (tileObject.TryGetComponent<ArcherTower>(out ArcherTower a) == true)
             {
                 if (a.level == 1)
+                {
                     afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[0];
+                    upgradePriceText.text = towerSpawner.towerPrefab[3]
+                        .GetComponent<Tower>()
+                        .price.ToString();
+                }
                 else if (a.level == 2)
+                {
                     afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[1];
+                    upgradePriceText.text = towerSpawner.towerPrefab[4]
+                        .GetComponent<Tower>()
+                        .price.ToString();
+                }
                 else if (a.level == 3)
                 {
                     upgradePanel.gameObject.SetActive(false);
@@ -146,9 +156,19 @@ public class UIManager : MonoBehaviour
             else if (tower.TryGetComponent<WizardTower>(out WizardTower w) == true)
             {
                 if (w.level == 1)
+                {
                     afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[2];
+                    upgradePriceText.text = towerSpawner.towerPrefab[5]
+                        .GetComponent<Tower>()
+                        .price.ToString();
+                }
                 if (w.level == 2)
+                {
                     afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[3];
+                    upgradePriceText.text = towerSpawner.towerPrefab[6]
+                        .GetComponent<Tower>()
+                        .price.ToString();
+                }
                 else if (w.level == 3)
                 {
                     upgradePanel.gameObject.SetActive(false);
@@ -157,7 +177,12 @@ public class UIManager : MonoBehaviour
             }
             else if (tower.TryGetComponent<SlowTower>(out SlowTower s) == true)
                 if (s.level == 1)
+                {
                     afterUpgradeImage.GetComponent<Image>().sprite = upgradeAfterSpriteList[4];
+                    upgradePriceText.text = towerSpawner.towerPrefab[7]
+                        .GetComponent<Tower>()
+                        .price.ToString();
+                }
                 else if (s.level == 2)
                 {
                     upgradePanel.gameObject.SetActive(false);
