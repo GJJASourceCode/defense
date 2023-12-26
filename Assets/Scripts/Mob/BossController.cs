@@ -70,7 +70,7 @@ public class BossController : MonoBehaviour
             )
             {
                 spawnManager.RemoveObject(currentPos);
-                Stop();
+                StartCoroutine(Stop());
             }
         }
         if (Vector2.Distance(moveTarget, transform.position) <= 0.01f)
@@ -102,7 +102,7 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public IEnumerator Stop() 
+    public IEnumerator Stop()
     {
         mob.TryGetComponent<BossController>(out BossController m);
         originSpeed = m.speed;
