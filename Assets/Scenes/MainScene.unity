@@ -2689,6 +2689,7 @@ MonoBehaviour:
   wave: 1
   maxWaveMobCount: 0
   isPaused: 0
+  gameManager: {fileID: 0}
 --- !u!4 &1420599735
 Transform:
   m_ObjectHideFlags: 0

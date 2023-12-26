@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class GameManager : MonoBehaviour
     private MobSpawner mobSpawner;
     public int maxWaveMobCount; // 현재 웨이브에 소환될 몹 개수
     public bool isPaused = false;
+  
+    
+
+   
 
     void Start()
     {
@@ -34,6 +40,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+               if (houseHP <= 0 )
+               {
+                SceneManager.LoadScene("GameOVer");
+               }
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
@@ -193,5 +205,9 @@ public class GameManager : MonoBehaviour
         var temp = new List<int> { 1, 2 };
         mobSpawner.spawnableMobIndexes = temp;
         mobSpawner.SpawnBoss(1);
+    }
+    public void Gameover()
+    {
+        Debug.Log("디짐");
     }
 }
