@@ -206,7 +206,7 @@ MonoBehaviour:
     y: 0
     G: 0
     H: 0
-  maxHP: 50
+  maxHP: 90
 --- !u!114 &5931651081423723852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7896314087be34b9b65e70af842c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 0.2
 --- !u!1 &7463967482759445818
 GameObject:
   m_ObjectHideFlags: 0

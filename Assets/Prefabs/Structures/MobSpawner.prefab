@@ -104,13 +104,11 @@ MonoBehaviour:
   - {fileID: 3283457397436222651, guid: 247a3c28110f72a4abc4167efbdfacf7, type: 3}
   - {fileID: 747254520945026521, guid: 8d132d4fc563ab14397b5cda6801e82d, type: 3}
   - {fileID: 4895672968322761967, guid: e8afdc15f425946429aa4c2a1f8490f3, type: 3}
-  - {fileID: 2108648172908233855, guid: 74a4de76c022bfa42a2216b3339c74c9, type: 3}
-  - {fileID: 2029016125043367682, guid: 88d48d4b6dee7f741b6adedc7d461847, type: 3}
   bossPrefabs:
   - {fileID: 2108648172908233855, guid: 74a4de76c022bfa42a2216b3339c74c9, type: 3}
   - {fileID: 2029016125043367682, guid: 88d48d4b6dee7f741b6adedc7d461847, type: 3}
   spawnableMobIndexes: 0000000001000000
-  spawnTime: 3
+  spawnTime: 2
   showPathTime: 5
   mobList: []
   waveMobCount: 0

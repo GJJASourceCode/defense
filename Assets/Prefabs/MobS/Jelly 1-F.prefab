@@ -105,7 +105,7 @@ MonoBehaviour:
     y: 0
     G: 0
     H: 0
-  maxHP: 10
+  maxHP: 15
 --- !u!114 &769645239492097106
 MonoBehaviour:
   m_ObjectHideFlags: 0

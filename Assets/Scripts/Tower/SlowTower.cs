@@ -23,9 +23,10 @@ public class SlowTower : Tower
                 StartCoroutine(ReturnSpeedToOriginal(mob));
                 if (mob.TryGetComponent<MobController>(out MobController m) == true)
                     m.speed *= slow;
+                else if (mob.TryGetComponent<BossController>(out BossController b) == true)
+                    b.speed *= slow;
             }
-            else if (mob.TryGetComponent<BossController>(out BossController b) == true)
-                b.speed *= slow;
+            
         }
     }
 
