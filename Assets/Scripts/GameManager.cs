@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject mobSpawnerPrefab;
     private SpawnManager spawnManager;
+    private ResourceSpawner resourceSpawner;
     public int money;
     public int houseHP;
     private UIManager uiManager;
@@ -16,20 +17,19 @@ public class GameManager : MonoBehaviour
     private MobSpawner mobSpawner;
     public int maxWaveMobCount; // 현재 웨이브에 소환될 몹 개수
     public bool isPaused = false;
-  
-    
-
-   
+    public float timeforStart = 0;
 
     void Start()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
         uiManager = FindObjectOfType<UIManager>();
+        resourceSpawner = FindObjectOfType<ResourceSpawner>();
         var spawner = spawnManager.SpawnObjectAtEdge(mobSpawnerPrefab);
         if (spawner == null)
             Debug.Log("null");
         mobSpawner = spawner.GetComponent<MobSpawner>();
         Wave1();
+        resourceSpawner.spawnTime = 0.9f;
     }
 
     public void AttackHouse(int damage)
@@ -40,12 +40,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-               if (houseHP <= 0 )
-               {
-                SceneManager.LoadScene("GameOVer");
-               }
+        if (houseHP <= 0 )
+        {
+            SceneManager.LoadScene("GameOVer");
+        }
 
-
+        timeforStart += Time.deltaTime;
+        if(timeforStart >= 3)
+            resourceSpawner.spawnTime = 3;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
@@ -144,14 +146,14 @@ public class GameManager : MonoBehaviour
 
     void Wave2()
     {
-        maxWaveMobCount = 10;
-        var temp = new List<int> { 2 };
+        maxWaveMobCount = 20;
+        var temp = new List<int> { 0, 2 };
         mobSpawner.spawnableMobIndexes = temp;
     }
 
     void Wave3()
     {
-        maxWaveMobCount = 10;
+        maxWaveMobCount = 15;
         var temp = new List<int> { 1 };
         mobSpawner.spawnableMobIndexes = temp;
     }
@@ -174,35 +176,35 @@ public class GameManager : MonoBehaviour
     void Wave6()
     {
         maxWaveMobCount = 20;
-        var temp = new List<int> { 1, 2 };
+        var temp = new List<int> { 3 };
         mobSpawner.spawnableMobIndexes = temp;
     }
 
     void Wave7()
     {
         maxWaveMobCount = 20;
-        var temp = new List<int> { 1, 2 };
+        var temp = new List<int> { 3, 5 };
         mobSpawner.spawnableMobIndexes = temp;
     }
 
     void Wave8()
     {
         maxWaveMobCount = 20;
-        var temp = new List<int> { 1, 2 };
+        var temp = new List<int> { 4 };
         mobSpawner.spawnableMobIndexes = temp;
     }
 
     void Wave9()
     {
         maxWaveMobCount = 20;
-        var temp = new List<int> { 1, 2 };
+        var temp = new List<int> { 4, 5 };
         mobSpawner.spawnableMobIndexes = temp;
     }
 
     void Wave10()
     {
         maxWaveMobCount = 20;
-        var temp = new List<int> { 1, 2 };
+        var temp = new List<int> { 5 };
         mobSpawner.spawnableMobIndexes = temp;
         mobSpawner.SpawnBoss(1);
     }

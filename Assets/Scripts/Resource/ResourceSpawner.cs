@@ -7,7 +7,7 @@ public class ResourceSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject resource;
-    public float spawnTime = 3f; // 생성주기
+    public float spawnTime; // 생성주기
     private float time; // 현재 시간
 
     private void Update()

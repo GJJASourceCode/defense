@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePosition: {x: 0, y: 0, z: 0}
-  price: 2
+  price: 5
   level: 2
-  attackDamage: 10
-  attackDelay: 1
+  attackDamage: 7.5
+  attackDelay: 0.5
   attackRange: 2
   detectDelay: 0.1
   arrowPrefab: {fileID: 5333975174468345529, guid: 53325b524a0ee414dadd15c8273fe22a, type: 3}

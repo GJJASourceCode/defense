@@ -55,8 +55,12 @@ public class TowerSpawner : MonoBehaviour
                 int towerNum = towerIndex;
                 tower.GetComponent<Tower>().tilePosition = tileIntPos;
                 gameManager.money -= tower.GetComponent<Tower>().price;
-                towerPrefab[towerIndex].GetComponent<Tower>().price += 1;
-
+                if (tower.TryGetComponent<ArcherTower>(out ArcherTower a) == true)
+                    towerPrefab[towerIndex].GetComponent<Tower>().price += 3;
+                else if (tower.TryGetComponent<WizardTower>(out WizardTower w) == true)
+                    towerPrefab[towerIndex].GetComponent<Tower>().price += 5;
+                else if (tower.TryGetComponent<SlowTower>(out SlowTower s) == true)
+                    towerPrefab[towerIndex].GetComponent<Tower>().price += 5;
                 uiManager.UpdateMoney();
                 uiManager.UpdatePrice(towerNum);
             }

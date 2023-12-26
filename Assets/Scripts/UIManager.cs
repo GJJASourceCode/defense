@@ -21,6 +21,11 @@ public class UIManager : MonoBehaviour
 
     public Image pauseImage;
 
+    public Image claerImage;
+
+    public List<Image> currentWaveMobImage;
+    public List<Sprite> waveMobs;
+
     private GameManager gameManager;
     private MobSpawner mobSpawner = null;
     private TowerSpawner towerSpawner;
@@ -90,6 +95,32 @@ public class UIManager : MonoBehaviour
             + (gameManager.maxWaveMobCount - mobSpawner.waveMobCount)
             + " / "
             + gameManager.maxWaveMobCount;
+            WaveMobImage(gameManager.wave);
+    }
+
+    public void WaveMobImage(int wave)
+    {
+        if(mobSpawner.spawnableMobIndexes.Count == 1)
+        {
+            currentWaveMobImage[0].GetComponent<Image>().sprite = waveMobs[mobSpawner.spawnableMobIndexes[0]];
+            currentWaveMobImage[1].gameObject.SetActive(false);
+            if(gameManager.wave == 5 || gameManager.wave == 10)
+            {
+                currentWaveMobImage[1].gameObject.SetActive(true);
+                currentWaveMobImage[0].GetComponent<Image>().sprite = waveMobs[mobSpawner.spawnableMobIndexes[0]];
+                if( gameManager.wave == 5 )
+                    currentWaveMobImage[1].GetComponent<Image>().sprite = waveMobs[6];
+                else if( gameManager.wave == 10 )
+                    currentWaveMobImage[1].GetComponent<Image>().sprite = waveMobs[7];
+            }
+        }
+        else if (mobSpawner.spawnableMobIndexes.Count == 2)
+        {
+            currentWaveMobImage[1].gameObject.SetActive(true);
+            currentWaveMobImage[0].GetComponent<Image>().sprite = waveMobs[mobSpawner.spawnableMobIndexes[0]];
+            currentWaveMobImage[1].GetComponent<Image>().sprite = waveMobs[mobSpawner.spawnableMobIndexes[1]];
+        }
+        
     }
 
     public void UpdatePrice(int index)
@@ -189,6 +220,12 @@ public class UIManager : MonoBehaviour
                     return;
                 }
         }
+    }
+
+    public IEnumerator ClearImage()
+    {
+        yield return new WaitForSeconds(1);
+        claerImage.gameObject.SetActive(true);
     }
 
     IEnumerator LazyStart()

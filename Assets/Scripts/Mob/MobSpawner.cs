@@ -17,6 +17,7 @@ public class MobSpawner : MonoBehaviour
 
     public List<Mob> mobList;
     public int waveMobCount = 0; // 한 웨이브에 소환된 몹 개수
+    public int currentMobCount;
     private PathFinding pathFinding;
 
     [SerializeField]
@@ -48,20 +49,28 @@ public class MobSpawner : MonoBehaviour
         timeforSpawn += Time.deltaTime;
         timeforPath += Time.deltaTime;
 
+        if ( waveMobCount >= gameManager.maxWaveMobCount)
+            return;
+
         if (timeforSpawn >= spawnTime)
         {
-            timeforSpawn = 0f;
+            if(gameManager.timeforStart >= 3 )
+                {
+                    timeforSpawn = 0f;
 
-            var random = spawnableMobIndexes[Random.Range(0, spawnableMobIndexes.Count)];
+                    var random = spawnableMobIndexes[Random.Range(0, spawnableMobIndexes.Count)];
 
-            var mob = Instantiate(
-                mobPrefabs[random],
-                transform.position - Vector3.up * 0.25f,
-                Quaternion.identity
-            );
-            mobList.Add(mob.GetComponent<Mob>());
-            waveMobCount++;
-            uiManager.UpdateWave();
+                    var mob = Instantiate
+                    (
+                        mobPrefabs[random],
+                        transform.position - Vector3.up * 0.25f,
+                        Quaternion.identity
+                    );
+                    mobList.Add(mob.GetComponent<Mob>());
+                    waveMobCount++;
+                    currentMobCount++;
+                    uiManager.UpdateWave();
+                }
         }
 
         if (timeforPath >= showPathTime)
@@ -69,11 +78,20 @@ public class MobSpawner : MonoBehaviour
             timeforPath = 0f;
             ShowPath();
         }
+
+        
     }
 
     public void MobDie(Mob mob)
     {
+        currentMobCount--;
         mobList.Remove(mob);
+        Debug.Log(currentMobCount);
+        if (currentMobCount == 0 && gameManager.wave == 10 && gameManager.houseHP > 0)
+            {        
+                Debug.Log("Clear!");
+                StartCoroutine(uiManager.ClearImage());
+            } 
     }
 
     private void ShowPath()
@@ -105,6 +123,7 @@ public class MobSpawner : MonoBehaviour
 
     public void SpawnBoss(int index)
     {
+        currentMobCount++;
         var mob = Instantiate(
             bossPrefabs[index],
             transform.position - Vector3.up * 0.25f,

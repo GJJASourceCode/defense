@@ -206,7 +206,7 @@ MonoBehaviour:
     y: 0
     G: 0
     H: 0
-  maxHP: 1234
+  maxHP: 250
 --- !u!114 &6742401220573410429
 MonoBehaviour:
   m_ObjectHideFlags: 0
