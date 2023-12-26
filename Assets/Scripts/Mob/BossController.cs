@@ -16,6 +16,8 @@ public class BossController : MonoBehaviour
     private Mob mob;
     private GameManager gameManager;
     private SpawnManager spawnManager;
+    private float originSpeed;
+    float stopforTime = 0;
 
     void OnEnable()
     {
@@ -46,7 +48,7 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        // TODO 몹 데미지 안 입음 수정 필요
+        stopforTime += Time.deltaTime;
         if (gameManager.isPaused)
             return;
         float step = speed * Time.deltaTime;
@@ -68,6 +70,7 @@ public class BossController : MonoBehaviour
             )
             {
                 spawnManager.RemoveObject(currentPos);
+                Stop();
             }
         }
         if (Vector2.Distance(moveTarget, transform.position) <= 0.01f)
@@ -97,5 +100,15 @@ public class BossController : MonoBehaviour
                 moveTarget = new Vector2(temp.x, temp.y + 0.15f);
             }
         }
+    }
+
+    public IEnumerator Stop() 
+    {
+        mob.TryGetComponent<BossController>(out BossController m);
+        originSpeed = m.speed;
+        Debug.Log(originSpeed);
+        m.speed = 0;
+        yield return new WaitForSeconds(1);
+        m.speed = originSpeed;
     }
 }

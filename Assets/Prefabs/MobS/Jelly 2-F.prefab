@@ -207,7 +207,7 @@ MonoBehaviour:
     y: 0
     G: 0
     H: 0
-  maxHP: 30
+  maxHP: 31
 --- !u!1 &5918272988164392363
 GameObject:
   m_ObjectHideFlags: 0

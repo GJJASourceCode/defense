@@ -101,8 +101,8 @@ MonoBehaviour:
   tilePosition: {x: 0, y: 0, z: 0}
   price: 30
   level: 3
-  attackDamage: 100
-  attackDelay: 2
+  attackDamage: 50
+  attackDelay: 1.5
   attackRange: 3.5
   detectDelay: 0.1
 --- !u!1 &9069740223298521093
